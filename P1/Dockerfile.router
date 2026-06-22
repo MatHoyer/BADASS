@@ -1,0 +1,8 @@
+FROM frrouting/frr:v8.4.1
+
+# Liste informative (image lit surtout /etc/frr/daemons)
+ENV DAEMONS="zebra bgpd ospfd isisd"
+
+# Fichier officiel démons (évite daemons.conf déprécié + merge)
+COPY ./daemons /etc/frr/daemons
+RUN chown frr:frr /etc/frr/daemons
